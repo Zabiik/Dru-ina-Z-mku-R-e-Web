@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fotogalerie – Družina Zámku Růže</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styly.css">
+</head>
+<body>
+
+<!-- BACKGROUND -->
+<div class="page-bg"></div>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo-link cinematic-hover">
+    <img class="logo" src="images/logo.png" alt="Logo skupiny">
+  </a>
+
+  <nav>
+    <a href="o-nas.html" class="cinematic-hover">O nás</a>
+    <a href="vystoupeni.html" class="cinematic-hover">Vystoupení</a>
+    <a href="fotogalerie.html" class="cinematic-hover">Fotogalerie</a>
+    <a href="kontakt.html" class="cinematic-hover">Kontakt</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="about-hero glass">
+  <h1>Fotogalerie</h1>
+  <p>
+    Okamžiky z našich vystoupení, bitev,
+    slavností a šermířských scén.
+  </p>
+</section>
+
+<!-- CONTENT -->
+<main class="about-content page-enter">
+
+  <!-- GALLERY GRID -->
+  <section class="gallery-grid">
+
+    <!-- AUTO 1–19 -->
+     <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/0.png" data-full="images/1.jpg" loading="lazy" alt="Fotogalerie 1">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/00.png" data-full="images/2.png" loading="lazy" alt="Fotogalerie 2">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/1.png" data-full="images/carodky-1.JPG" loading="lazy" alt="Fotogalerie 1">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/2.png" data-full="images/carodky-2.JPG" loading="lazy" alt="Fotogalerie 2">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/3.png" data-full="images/carodky-3.JPG" loading="lazy" alt="Fotogalerie 3">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/4.png" data-full="images/carodky-4.JPG" alt="Fotogalerie 4">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/5.png" data-full="images/carodky-5.JPG" loading="lazy" alt="Fotogalerie 5">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/6.png" data-full="images/carodky-6.JPG" loading="lazy" alt="Fotogalerie 6">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/7.png" data-full="images/carodky-7.JPG" loading="lazy" alt="Fotogalerie 7">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/8.png" data-full="images/carodky-8.JPG" loading="lazy" alt="Fotogalerie 8">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/9.png" data-full="images/carodky-9.JPG" loading="lazy" alt="Fotogalerie 9">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/10.png" data-full="images/carodky-11.JPG" loading="lazy" alt="Fotogalerie 10">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/11.png" data-full="images/carodky-12.JPG" loading="lazy" alt="Fotogalerie 11">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/12.png" data-full="images/carodky-13.JPG" loading="lazy" alt="Fotogalerie 12">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/13.png" data-full="images/carodky-14.JPG" loading="lazy" alt="Fotogalerie 13">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/14.png" data-full="images/carodky-15.JPG" loading="lazy" alt="Fotogalerie 14">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/17.png" data-full="images/carodky-18.JPG" loading="lazy" alt="Fotogalerie 17">
+    </div>
+    <div class="gallery-item cinematic-hover">
+      <img src="images/thumb/19.png" data-full="images/carodky-21.JPG" loading="lazy" alt="Fotogalerie 19">
+    </div>
+
+  </section>
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-img" src="" alt="">
+</div>
+
+<!-- LIGHTBOX SCRIPT -->
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.querySelector('.lightbox-img');
+  const closeBtn = document.querySelector('.lightbox-close');
+
+  document.querySelectorAll('.gallery-item img').forEach(img => {
+    img.addEventListener('click', () => {
+      const fullSrc = img.dataset.full;
+
+      lightboxImg.src = '';
+      lightbox.classList.add('active');
+
+      const fullImage = new Image();
+      fullImage.src = fullSrc;
+      fullImage.onload = () => {
+        lightboxImg.src = fullSrc;
+      };
+    });
+  });
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox || e.target === closeBtn) {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+    }
+  });
+</script>
+
+<!-- PAGE TRANSITION -->
+<script>
+  document.body.classList.add('page-enter');
+  requestAnimationFrame(() => {
+    document.body.classList.remove('page-enter');
+  });
+
+  document.querySelectorAll('a[href]').forEach(link => {
+    link.addEventListener('click', e => {
+      const url = link.getAttribute('href');
+      if (!url || url.startsWith('#') || url.startsWith('http') || link.target === '_blank') return;
+
+      e.preventDefault();
+      document.body.classList.add('page-exit');
+      setTimeout(() => window.location.href = url, 350);
+    });
+  });
+</script>
+
+</body>
+</html>

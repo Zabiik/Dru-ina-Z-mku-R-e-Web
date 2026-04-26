@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kontakt – Družina Zámku Růže</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styly.css">
+</head>
+<body>
+
+<!-- BACKGROUND -->
+<div class="page-kontakt-bg"></div>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo-link cinematic-hover">
+    <img class="logo" src="images/logo.png" alt="Logo skupiny">
+  </a>
+
+  <nav>
+    <a href="o-nas.html" class="cinematic-hover">O nás</a>
+    <a href="vystoupeni.html" class="cinematic-hover">Vystoupení</a>
+    <a href="fotogalerie.html" class="cinematic-hover">Fotogalerie</a>
+    <a href="kontakt.html" class="cinematic-hover">Kontakt</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="about-hero glass">
+  <h1>Kontakt</h1>
+  <p>
+    Máte zájem o vystoupení, spolupráci nebo se nás chcete na něco zeptat?
+    Ozvěte se nám.
+  </p>
+</section>
+
+<!-- CONTENT -->
+<main class="about-content page-enter">
+
+  <section class="contact-grid">
+
+    <!-- FACEBOOK -->
+    <a
+      href="https://www.facebook.com/profile.php?id=100039449624103"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="contact-card glass cinematic-hover"
+    >
+      <img src="images/fb.png" alt="Facebook">
+      <h3>Facebook</h3>
+      <span>Můžete nás kontaktovat přes Facebook stránku.</span>
+    </a>
+
+    <!-- PHONE -->
+    <a
+      href="tel:+420720159028"
+      class="contact-card glass cinematic-hover"
+    >
+      <img src="images/telefon.png" alt="Telefon">
+      <h3>Telefon</h3>
+      <span>+420 720 159 028</span>
+    </a>
+
+  </section>
+
+</main>
+
+<!-- PAGE TRANSITION -->
+<script>
+  document.body.classList.add('page-enter');
+  requestAnimationFrame(() => {
+    document.body.classList.remove('page-enter');
+  });
+
+  document.querySelectorAll('a[href]').forEach(link => {
+    const url = link.getAttribute('href');
+    if (!url || url.startsWith('#') || url.startsWith('http') || link.target === '_blank') return;
+
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.body.classList.add('page-exit');
+      setTimeout(() => window.location.href = url, 350);
+    });
+  });
+</script>
+
+</body>
+</html>

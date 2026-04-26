@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>Družina Zámku Růže</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styly.css">
+  
+</head>
+<body>
+
+  <!-- INTRO OVERLAY -->
+  <div class="intro">
+    <img src="images/logo.png" alt="Logo skupiny">
+  </div>
+
+  <!-- VIDEO BACKGROUND -->
+  <div class="video-bg">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="images/background.mov" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="overlay"></div>
+
+  <!-- HEADER -->
+  <header>
+<a href="index.html" class="logo-link cinematic-hover">
+  <img class="logo" src="images/logo.png" alt="Logo skupiny">
+</a>
+
+    </a>
+
+<nav>
+  <a href="o-nas.html" class="cinematic-hover">O nás</a>
+  <a href="vystoupeni.html" class="cinematic-hover">Vystoupení</a>
+  <a href="fotogalerie.html" class="cinematic-hover">Fotogalerie</a>
+  <a href="kontakt.html" class="cinematic-hover">Kontakt</a>
+</nav>
+
+  </header>
+
+  <!-- HERO -->
+  <main class="hero page-enter" >
+    <h1>Dobový a scénický šerm</h1>
+
+    <p>
+      Boj, čest a příběhy minulosti. Vystupujeme na historických slavnostech,
+      v bitvách, turnajích i komunitních akcích.
+    </p>
+
+    <div class="buttons">
+<a href="#" class="btn cinematic-hover">Kde nás potkáte</a>
+<a href="kontakt.html" class="btn outline cinematic-hover">Kontakt & spolupráce</a>
+
+    </div>
+
+<div class="socials">
+  <a
+    href="https://www.youtube.com/@druzina_zamku_ruze"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="cinematic-hover"
+  >
+    YouTube
+  </a>
+
+  <a
+    href="https://www.facebook.com/profile.php?id=100039449624103"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="cinematic-hover"
+  >
+    Facebook
+  </a>
+
+  <a
+    href="#"
+    class="cinematic-hover"
+  >
+    Instagram
+  </a>
+</div>
+
+  </main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const intro = document.querySelector('.intro');
+    if (!intro) return;
+
+    const skipIntro = sessionStorage.getItem('skipIntro');
+
+    if (skipIntro === 'true') {
+      intro.classList.add('hidden');
+      return;
+    }
+
+    // první vstup → přehrajeme intro
+    intro.classList.add('play');
+
+    // po dohrání intro označíme jako přehrané
+    setTimeout(() => {
+      sessionStorage.setItem('skipIntro', 'true');
+    }, 3000); // MUSÍ sedět s délkou animace
+  });
+</script>
+
+<script>
+  // FADE-IN při načtení stránky
+  document.body.classList.add('page-enter');
+  requestAnimationFrame(() => {
+    document.body.classList.remove('page-enter');
+  });
+
+  // FADE-OUT při kliknutí na interní odkazy
+  document.querySelectorAll('a[href]').forEach(link => {
+    link.addEventListener('click', e => {
+      const url = link.getAttribute('href');
+
+      // ignoruj externí odkazy, # odkazy, nové okno
+      if (
+        !url ||
+        url.startsWith('#') ||
+        url.startsWith('http') ||
+        link.target === '_blank'
+      ) return;
+
+      e.preventDefault();
+      document.body.classList.add('page-exit');
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 350);
+    });
+  });
+</script>
+
+</body>
+</html>

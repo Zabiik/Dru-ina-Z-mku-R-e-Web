@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vystoupení – Družina Zámku Růže</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styly.css">
+</head>
+<body>
+
+  <!-- VIDEO BACKGROUND -->
+<div class="page-vystoupeni-bg"> </div>
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo-link">
+      <img class="logo" src="images/logo.png" alt="Logo skupiny">
+    </a>
+
+<nav>
+  <a href="o-nas.html" class="cinematic-hover">O nás</a>
+  <a href="vystoupeni.html" class="cinematic-hover">Vystoupení</a>
+  <a href="fotogalerie.html" class="cinematic-hover">Fotogalerie</a>
+  <a href="kontakt.html" class="cinematic-hover">Kontakt</a>
+</nav>
+
+  </header>
+
+  <!-- HERO -->
+  <section class="about-hero glass">
+    <h1>Vystoupení</h1>
+    <p>
+      Ukázky našich vystoupení, bitev, šermířských scén
+      a divadelních momentů z akcí po celé republice.
+    </p>
+  </section>
+
+  <!-- CONTENT -->
+  <main class="about-content page-enter">
+
+    <!-- VIDEO GRID -->
+<section class="video-grid">
+
+<div class="video-card glass">
+  <div class="video-inner">
+    <iframe
+      src="https://www.youtube.com/embed/SD7azpXCIw8"
+      title="Slavnosti královny Johanky"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+
+
+<div class="video-card glass">
+  <div class="video-inner">
+    <iframe
+      src="https://www.youtube.com/embed/IOCbM1VryUU"
+      title="Dobřichovická Alotria"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+<div class="video-card glass">
+  <div class="video-inner">
+    <iframe
+      src="https://www.youtube.com/embed/IeeyMLIBIs4"
+      title="Brdský pohár"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+
+<div class="video-card glass">
+  <div class="video-inner">
+    <iframe
+      src="https://www.youtube.com/embed/sVvcWLDRzbc"
+      title="Špejchar"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+
+<div class="video-card glass">
+  <div class="video-inner">
+    <iframe
+      src="https://www.youtube.com/embed/ZHF80GBAyo8"
+      title="Myslivecký ples"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+
+<div class="video-card glass">
+  <div class="video-inner">
+    <iframe
+      src="https://www.youtube.com/embed/LwXdNq5JTi8"
+      title="Čarodějnice"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+
+</section>
+
+    </section>
+
+    <!-- YOUTUBE CTA -->
+    <section class="youtube-cta glass">
+      <h2>Další videa</h2>
+      <p>
+        Kompletní záznamy vystoupení, šermířské scény
+        a další obsah najdeš na našem YouTube kanále.
+      </p>
+
+      <a
+        href="https://www.youtube.com/@druzina_zamku_ruze"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn"
+      >
+        Přejít na YouTube
+      </a>
+    </section>
+
+  </main>
+<script>
+  const logoLink = document.getElementById('logoLink');
+
+  if (logoLink) {
+    logoLink.addEventListener('click', () => {
+      sessionStorage.setItem('skipIntro', 'true');
+    });
+  }
+</script>
+<script>
+  // FADE-IN při načtení stránky
+  document.body.classList.add('page-enter');
+  requestAnimationFrame(() => {
+    document.body.classList.remove('page-enter');
+  });
+
+  // FADE-OUT při kliknutí na interní odkazy
+  document.querySelectorAll('a[href]').forEach(link => {
+    link.addEventListener('click', e => {
+      const url = link.getAttribute('href');
+
+      // ignoruj externí odkazy, # odkazy, nové okno
+      if (
+        !url ||
+        url.startsWith('#') ||
+        url.startsWith('http') ||
+        link.target === '_blank'
+      ) return;
+
+      e.preventDefault();
+      document.body.classList.add('page-exit');
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 350);
+    });
+  });
+</script>
+<script>
+  const logo = document.getElementById('logoLink');
+  if (logo) {
+    logo.addEventListener('click', () => {
+      sessionStorage.setItem('skipIntro', 'true');
+    });
+  }
+</script>
+
+</body>
+
+
+</html>

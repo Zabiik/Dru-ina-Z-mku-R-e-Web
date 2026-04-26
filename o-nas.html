@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>O nás – Družina Zámku Růže</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styly.css">
+</head>
+<body>
+
+  <!-- VIDEO BACKGROUND -->
+<div class="page-onas-bg"> </div>
+
+  <!-- HEADER -->
+  <header>
+<a href="index.html" class="logo-link cinematic-hover">
+  <img class="logo" src="images/logo.png" alt="Logo skupiny">
+</a>
+
+<nav>
+  <a href="o-nas.html" class="cinematic-hover">O nás</a>
+  <a href="vystoupeni.html" class="cinematic-hover">Vystoupení</a>
+  <a href="fotogalerie.html" class="cinematic-hover">Fotogalerie</a>
+  <a href="kontakt.html" class="cinematic-hover">Kontakt</a>
+</nav>
+
+  </header>
+
+  <!-- HERO -->
+  <section class="about-hero glass">
+    <h1>Kdo jsme</h1>
+    <p>
+      Šermířská skupina, která sídlí v Rožmitálu pod Třemšínem.
+    </p>
+  </section>
+
+  <main class="about-content page-enter">
+
+
+    <section class="about-block glass">
+      <h2>Náš příběh</h2>
+      <p>
+Družina zámku Růže je nadšená šermířská skupina, která oživuje středověkou atmosféru především skrze dobový a scénický šerm. Na naše vystoupení jezdíme na historické slavnosti, bitvy, turnaje i komunitní akce, kde kombinuje bojové umění, herecké ztvárnění a živé příběhy z minulosti. 
+ <br><br>
+
+Naše činnost není jen o technice s mečem - je to cesta do minulosti, kterou divákům předáváme skrze napínavé choreografie, autentické kostýmy a intenzivní vystoupení, která vtáhnou každého do děje. 
+<br><br>
+
+Každým rokem nás můžete potkat na akcích jako jsou Slavnosti královny Johanky, Alotria či jiných festivalech, kde předvádíme dobrodružné a vizuálně působivé šermířské vstupy pro diváky všech věkových kategorií. 
+<br><br>
+
+Přidej se k nám - ať už jako divák, nebo budoucí šermíř! Tvoříme komunitu lidí, kteří sdílí lásku k historii, šermu a společnému zážitku. 
+
+      </p>
+    </section>
+
+    <section class="about-pillars">
+      <div class="pillar glass">
+        <h3>Slavnosti</h3>
+        <p>Konáte středověké slavnosti nebo festivaly? Stačí nás kontaktovat, rádi se s Vámi domluvíme na vystoupení.</p>
+      </div>
+
+      <div class="pillar glass">
+        <h3>Firemní akce</h3>
+        <p>Šermířské vystoupení je originální způsob, jak rozproudit náladu na firemním večírku.</p>
+      </div>
+
+      <div class="pillar glass">
+        <h3>Svatby</h3>
+        <p>Pokud byste chtěli program Vaší svatby rozšířit o šermířské vystoupení, můžete nás kontaktovat.</p>
+      </div>
+
+      <div class="pillar glass">
+        <h3>Jiné akce</h3>
+        <p>Pokud byste si přáli vidět nás na Vaší akci, stačí nás kontaktovat, a můžeme se domluvit.</p>
+      </div>
+    </section>
+
+  </main>
+
+<script>
+  const logoLink = document.getElementById('logoLink');
+
+  if (logoLink) {
+    logoLink.addEventListener('click', () => {
+      sessionStorage.setItem('skipIntro', 'true');
+    });
+  }
+</script>
+<script>
+  // FADE-IN při načtení stránky
+  document.body.classList.add('page-enter');
+  requestAnimationFrame(() => {
+    document.body.classList.remove('page-enter');
+  });
+
+  // FADE-OUT při kliknutí na interní odkazy
+  document.querySelectorAll('a[href]').forEach(link => {
+    link.addEventListener('click', e => {
+      const url = link.getAttribute('href');
+
+      // ignoruj externí odkazy, # odkazy, nové okno
+      if (
+        !url ||
+        url.startsWith('#') ||
+        url.startsWith('http') ||
+        link.target === '_blank'
+      ) return;
+
+      e.preventDefault();
+      document.body.classList.add('page-exit');
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 350);
+    });
+  });
+</script>
+
+
+</body>
+</html>
